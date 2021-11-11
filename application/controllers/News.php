@@ -8,6 +8,7 @@ class News extends CI_Controller
     $this->load->helper('url_helper');
   }
 
+  // Newsの一覧を表示
   public function index()
   {
     $data['news'] = $this->news_model->get_news();
@@ -17,17 +18,16 @@ class News extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  //Newsの詳細を表示
   public function view($slug = NULL)
   {
     $data['news_item'] = $this->news_model->get_news($slug);
-    if(emmpty($data['news_item']))
-    {
+    if (empty($data['news_item'])) {
       ehow_404();
     }
     $data['title'] = $data['news_item']['title'];
-    $this->load->view('templates/header',$data);
+    $this->load->view('templates/header', $data);
     $this->load->view('news/view', $data);
     $this->load->view('templates/footer');
-
   }
 }
