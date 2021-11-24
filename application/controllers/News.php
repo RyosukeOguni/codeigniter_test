@@ -34,7 +34,11 @@ class News extends CI_Controller
   // Newsを新規作成
   public function create()
   {
+    //viewでform_openを使用する為のヘルパーを読込
+    //ヘルパーは主にviewで使用する関数の集まり
     $this->load->helper('form');
+    //$this->form_validationを使用する為のライブラリを読込
+    //ライブラリは便利なクラスの集まり
     $this->load->library('form_validation');
 
     $data['title'] = 'Create a news item';
